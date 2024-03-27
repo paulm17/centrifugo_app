@@ -1,0 +1,55 @@
+{
+  "name": "@acme/centrifuge-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "types": "./dist/index.d.mts",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup index.ts --dts --format esm,cjs --clean",
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "luxon": "^3.4.2",
+    "next": "^13.5.4",
+    "md5": "^2.3.0",
+    "valtio": "^1.11.2"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
+    "@types/luxon": "^3.3.2",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/md5": "^2.3.2",
+    "@types/react": "^18.2.21",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  },
+  "prettier": "@acme/prettier-config",
+  "publishConfig": {
+    "access": "public"
+  }
+}
